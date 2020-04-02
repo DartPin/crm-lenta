@@ -2,7 +2,7 @@
   <div class="retail-centres">
       <div class="retail-centres__title">Торговые комплексы Лента</div>
 
-      <div class="retail-centres__subtitle">Торговые комплексы Волга</div>
+      <div class="retail-centres__subtitle" @click='changePage("RetailCentres/Volga")'>Торговые комплексы Волга</div>
 
       <div class="retail-centres__block">
           <div class="retail-centres__block-item" v-for="item of retailCentresVolga" :key="item.id">
@@ -55,198 +55,22 @@ export default {
   },
   data: function () {
     return {
-      retailCentresVolga: [
-          {
-              id: 0,
-              number: 30,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 1,
-              number: 36,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 2,
-              number: 37,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 3,
-              number: 40,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 4,
-              number: 50,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 5,
-              number: 55,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 6,
-              number: 56,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 7,
-              number: 60,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-      ],
-      currentDealVolga: [
-          {
-              id: 0,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 1,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 2,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 3,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 4,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 5,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          }
-      ],
-      retailCentresCentr: [
-          {
-              id: 0,
-              number: 30,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 1,
-              number: 36,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 2,
-              number: 37,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 3,
-              number: 40,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 4,
-              number: 50,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 5,
-              number: 55,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 6,
-              number: 56,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-          {
-              id: 7,
-              number: 60,
-              city: 'Самара',
-              adress: 'ул. Ленина 1'
-          },
-      ],
-      currentDealCentr: [
-          {
-              id: 0,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 1,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 2,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 3,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 4,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          },
-          {
-              id: 5,
-              title: 'Товары недели 01.04.20г',
-              RC: [30, 36, 50, 55],
-              manager: 'Усова Наталья',
-              comment: 'Отправлено монтажникам'
-          }
-      ],
+      retailCentresVolga: null,
+      currentDealVolga: null,
+      retailCentresCentr: null,
+      currentDealCentr: null,
     }
   },
+  mounted(){
+      this.retailCentresVolga = this.$store.getters.RETAILCENTRESVOLGA;
+      this.retailCentresCentr = this.$store.getters.RETAILCENTRESCENTR;
+      this.currentDealVolga = this.$store.getters.RETAILDEALVOLGA;
+      this.currentDealCentr = this.$store.getters.RETAILDEALCENTR;
+  },
   methods:{
-      
+    changePage(val){
+      this.$router.push(val)
+    } 
   }
 }
 </script>
