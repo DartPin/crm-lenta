@@ -1,50 +1,34 @@
 <template>
   <div class="retail-centres">
       <div class="retail-centres__title">Торговые комплексы Лента</div>
+      <div  v-for="element of retailCentres" :key="element.id">
+        
+        <div class="retail-centres__subtitle" @click='changePage("/RetailCentres/reg/"+element.latName)'>Торговые комплексы {{element.name}}</div>
 
-      <div class="retail-centres__subtitle" @click='changePage("RetailCentres/Volga")'>Торговые комплексы Волга</div>
+        <div class="retail-centres__block">
+            <div class="retail-centres__block-item" v-for="item of element.RC" :key="item.id" @click="changePage('/RetailCentres/rc'+item.number)">
+                <div class="retail-centres__block-item-number">ТК-{{item.number}},</div>
+                <div class="retail-centres__block-item-city">{{item.city}}</div>
+                <div class="retail-centres__block-item-adress">{{item.adress}}</div>      
+            </div>
+        </div>
 
-      <div class="retail-centres__block">
-          <div class="retail-centres__block-item" v-for="item of retailCentresVolga" :key="item.id">
-            <div class="retail-centres__block-item-number">ТК-{{item.number}},</div>
-            <div class="retail-centres__block-item-city">{{item.city}}</div>
-            <div class="retail-centres__block-item-adress">{{item.adress}}</div>      
-          </div>
+        <div class="retail-centres__subtitle2">Заказы в работе</div>
+
+        <div class="retail-centres__block">
+            
+            <div class="retail-centres__deal-item" v-for="deal of deals[element.id].RCDeals" :key="deal.id">
+                 
+                <div class="retail-centres__deal-item-title">{{deal.title}}</div>
+                <div class="retail-centres__deal-item-RC" v-for="el of deal.RC" :key="el">ТК-{{el}}, </div>
+                <div class="retail-centres__deal-item-comment">{{deal.manager}}: {{deal.comment}}</div>      
+            </div>
+        </div>
+
+        <div class="retail-centres__subtitle3">Другие заказы...</div>
+      
       </div>
-
-      <div class="retail-centres__subtitle2">Заказы в работе</div>
-
-      <div class="retail-centres__block">
-          <div class="retail-centres__deal-item" v-for="item of currentDealVolga" :key="item.id">
-            <div class="retail-centres__deal-item-title">{{item.title}}</div>
-            <div class="retail-centres__deal-item-RC" v-for="el of item.RC" :key="el">ТК-{{el}}, </div>
-            <div class="retail-centres__deal-item-comment">{{item.manager}}: {{item.comment}}</div>      
-          </div>
-      </div>
-
-      <div class="retail-centres__subtitle3">Другие заказы...</div>
-
-      <div class="retail-centres__subtitle">Торговые комплексы Центр</div>
-
-      <div class="retail-centres__block">
-          <div class="retail-centres__block-item" v-for="item of retailCentresCentr" :key="item.id">
-            <div class="retail-centres__block-item-number">ТК-{{item.number}},</div>
-            <div class="retail-centres__block-item-city">{{item.city}}</div>
-            <div class="retail-centres__block-item-adress">{{item.adress}}</div>      
-          </div>
-      </div>
-
-      <div class="retail-centres__subtitle2">Заказы в работе</div>
-
-      <div class="retail-centres__block">
-          <div class="retail-centres__deal-item" v-for="item of currentDealCentr" :key="item.id">
-            <div class="retail-centres__deal-item-title">{{item.title}}</div>
-            <div class="retail-centres__deal-item-RC" v-for="el of item.RC" :key="el">ТК-{{el}}, </div>
-            <div class="retail-centres__deal-item-comment">{{item.manager}}: {{item.comment}}</div>      
-          </div>
-      </div>
-
-      <div class="retail-centres__subtitle3">Другие заказы...</div>
+      {{retailCentres}}
   </div>
 </template>
 
@@ -55,17 +39,14 @@ export default {
   },
   data: function () {
     return {
-      retailCentresVolga: null,
-      currentDealVolga: null,
-      retailCentresCentr: null,
-      currentDealCentr: null,
+      retailCentres: null,
+      deals: null
     }
   },
   mounted(){
-      this.retailCentresVolga = this.$store.getters.RETAILCENTRESVOLGA;
-      this.retailCentresCentr = this.$store.getters.RETAILCENTRESCENTR;
-      this.currentDealVolga = this.$store.getters.RETAILDEALVOLGA;
-      this.currentDealCentr = this.$store.getters.RETAILDEALCENTR;
+      this.retailCentres = this.$store.getters.RETAILCENTRES;
+      this.deals = this.$store.getters.DEALS;
+      console.log(this.deals)
   },
   methods:{
     changePage(val){
@@ -75,7 +56,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
     .retail-centres{
         padding: 5px 0 0 10px;
     }

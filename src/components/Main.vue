@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
     .main{
         height: 100%;
     }

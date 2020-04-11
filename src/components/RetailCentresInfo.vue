@@ -6,7 +6,7 @@
 
       <div class="retail-centres-info__block">
         <div class="retail-centres-info__block-item-left">
-          <img class="retail-centres-info__img-edit" src="../icons/edit.png">
+          <img class="retail-centres-info__img-edit" src="../icons/edit.png" @click="changePage('/RetailCentres/editrc'+rc.number)">
           <div class="retail-centres-info__block-item-adress">Адрес: {{rc.city}}, {{rc.adress}}</div>
           <div class="retail-centres-info__block-item-contacts" v-for="item of rc.contacts" :key="item.id">
             <div class="retail-centres-info__block-item-contacts-position">Должность: {{item.position}}</div>
@@ -24,11 +24,11 @@
 
       <div class="retail-centres-info__block">
         <div class="retail-centres-info__block-item-left">
-          <img class="retail-centres-info__img-edit" src="../icons/edit.png">
-          <div class="retail-centres-info__block-place">
-            <div class="retail-centres-info__subtitle2">Место</div>
-              <div class="retail-centres-info__block-place-size"> 2х3</div>
-              <div class="retail-centres-info__block-place-bunner"> Товар недели</div>
+          <img class="retail-centres-info__img-edit" src="../icons/edit.png" @click="changePage('/RetailCentres/editrc'+rc.number)">
+          <div class="retail-centres-info__block-place" v-for="item of rc.bunnerPlace" :key="item.id">
+            <div class="retail-centres-info__subtitle2">{{item.name}}</div>
+              <div class="retail-centres-info__block-place-size"> {{item.width}}x{{item.height}}</div>-
+              <div class="retail-centres-info__block-place-bunner"> {{item.bunner}}</div>
           </div>
         </div>
         <div class="retail-centres-info__block-item-right">
@@ -68,32 +68,41 @@ export default {
     }
   },
   mounted(){
-    let RC = this.$store.getters.RETAILCENTRESVOLGA;
+    
+    let data = this.$store.getters.RETAILCENTRES;
     let index = this.$route.params.numRC
-    RC.forEach(element => {
-      if (Number(element.number) ===Number(index) ){
-        this.rc = element
-        console.log(this.rc)
-      }
-    });
 
-    let RCdeal = this.$store.getters.RETAILDEALVOLGA;
-    RCdeal.forEach(el => {
-      el.RC.forEach(item =>{
-        if (Number(item) === Number(index)){
-          this.deals.push(el)
+    data.forEach(el => {
+      el.RC.forEach(element =>{
+        if (Number(element.number) ===Number(index) ){
+          this.rc = element
         }
+      })
+    })
+
+
+    let RCdeals = this.$store.getters.DEALS;
+    RCdeals.forEach(el => {
+      console.log(el)
+      el.RCDeals.forEach(item =>{
+        item.RC.forEach(rc =>{
+          if (Number(rc) === Number(index)){
+            this.deals.push(item)
+          }
+        })        
       })
     });
   },
   methods:{
-      
+    changePage(val){
+      this.$router.push(val)
+    }      
   },
 
 }
 </script>
 
-<style lang="scss">
+<style>
     .retail-centres-info__title{
         font-size: 25px;
         color: #ffffff;
@@ -192,5 +201,21 @@ export default {
         padding: 10px 30px 10px 0;
         margin-left: 25px;
         border-bottom: 1px solid #0f1179;
+    }
+    .retail-centres-info__block-place{
+      display: inline-block;
+      width: 45%;
+    }
+    .retail-centres-info__block-place-size{
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 10px 5px 0 25px;
+    }
+    .retail-centres-info__block-place-bunner{
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 0 0 0 5px;
     }
 </style>
