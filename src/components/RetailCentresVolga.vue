@@ -1,13 +1,13 @@
 <template>
   <div class="retail-centres-volga">
-      <div class="retail-centres-volga__title">Торговые комплексы Лента(Регион Волга)</div> 
+      <div class="retail-centres-volga__title">Торговые комплексы Лента(Регион {{retailCentresReg.name}})</div> 
 
       <div class="retail-centres-volga__img-block">
-        <img class="retail-centres-volga__img-add" src="../icons/add.png"> 
+        <img class="retail-centres-volga__img-add" src="../icons/add.png" @click="changePage('/RetailCentres/newRC')"> 
       </div>      
 
       <div class="retail-centres-volga__block">
-          <div class="retail-centres-volga__block-item" v-for="item of retailCentresVolga" :key="item.id" @click="changePage('/RetailCentres/rc'+item.number)">
+          <div class="retail-centres-volga__block-item" v-for="item of retailCentresReg.RC" :key="item.id" @click="changePage('/RetailCentres/rc'+item.number)">
             <div class="retail-centres-volga__block-item-left">
               <div class="retail-centres-volga__block-item-number">ТК-{{item.number}},</div>
               <div class="retail-centres-volga__block-item-city">{{item.city}}</div>
@@ -30,11 +30,18 @@ export default {
   },
   data: function () {
     return {
-      retailCentresVolga: null
+      retailCentresReg: []
     }
   },
   mounted(){
-    this.retailCentresVolga = this.$store.getters.RETAILCENTRESVOLGA;
+    let data = this.$store.getters.RETAILCENTRES;
+    let index = this.$route.params.region
+    data.forEach(element => {
+      if (element.latName === index){
+        this.retailCentresReg = element;
+        console.log(element)
+      }
+    });
   },
   methods:{
     changePage(val){
@@ -44,7 +51,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
     .retail-centres-volga__title{
         font-size: 25px;
         color: #ffffff;
