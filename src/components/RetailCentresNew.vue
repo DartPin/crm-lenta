@@ -74,7 +74,6 @@
       </div>
       <div class="retail-centres-new__block-item-right"></div>
 
-      {{rc}}
       <button class="login__btn-confrim" @click="saveChange(rc, selected)">сохранить</button>
   </div>
 </template>
