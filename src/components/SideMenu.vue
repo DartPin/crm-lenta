@@ -2,7 +2,7 @@
   <div class="side-menu" @mouseenter="showMenu = true, showText = false" @mouseleave="showMenu = false">
       <div class="side-menu__items" v-if="showMenu">
           <div class="side-menu__item">акты</div>
-          <div class="side-menu__item" @click='changePage("/RetailCentres")'>ТК Лента</div>
+          <div class="side-menu__item" @click='changePage("/")'>ТК Лента</div>
       </div>
       <div class="hover-me" v-if="showText">
           <div class="arrow-8"></div>
