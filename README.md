@@ -28,12 +28,13 @@ npm run build
 для front-end
 -vue.js
 -vue-router
+-vuex
 -axios
 
 
 На текущий момент реализованы следующие разделы
 
-## Main Page (path: '/')
+# Main Page (path: '/')
 
 Главная страница где можно посмотреть перечень ТК по дивизионам
 
@@ -41,4 +42,32 @@ npm run build
 
 На текущий момент работают - боковое меню, и ссылки на перечень ТК по дивизионам и ссылки на ТК в частности
 
-## Main Page (path: '/')
+# Информация о ТК по дивизионам (path: '/RetailCentres/reg/:division')
+Информация о ТК по дивизионам
+
+![Иллюстрация к проекту](https://github.com/DartPin/crm-lenta/raw/master/image/retail-centres.png)
+
+Здесь можно выбрать нужный ТК, отредактировать выбранное ТК, либо создать новое
+
+# Информация о выбранном ТК(path: '/RetailCentres/:TK')
+Информация о ТК 
+
+![Иллюстрация к проекту](https://github.com/DartPin/crm-lenta/raw/master/image/info.png)
+
+В этом компоненте можно изменить информацию о текущем ТК либо просто ознакомиться с этой информацией
+
+
+# Изменение выбранного ТК (path: '/RetailCentres/edit:TK')
+Информация о ТК по дивизионам
+
+![Иллюстрация к проекту](https://github.com/DartPin/crm-lenta/raw/master/image/edit.png)
+
+Здесь можно отредактировать выбранное ТК
+
+
+# Создание нового ТК (path: '/RetailCentres/newRC')
+Информация о ТК по дивизионам
+
+![Иллюстрация к проекту](https://github.com/DartPin/crm-lenta/raw/master/image/new.png)
+
+Создание нужного ТК
